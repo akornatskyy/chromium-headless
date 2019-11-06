@@ -1,0 +1,13 @@
+language: bash
+
+services:
+  - docker
+
+script:
+  - ./update.sh
+  -
+    echo "$DOCKER_PASSWORD" |
+    docker login -u "$DOCKER_USERNAME" --password-stdin
+  -
+    docker images --format "{{.Repository}}:{{.Tag}}" |
+    awk '/akorn/ && !/none/' | tac | xargs -I {} docker push {}
