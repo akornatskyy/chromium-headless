@@ -1,6 +1,6 @@
 #!/bin/sh
-set -eo pipefail
 
+set -e
 
 cd "$(dirname "$0")"
 tags=$(ls -d */)
