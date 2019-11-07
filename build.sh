@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 set -eo pipefail
 
 
-cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
-tags=( */ )
-for tag in "${tags[@]%/}" ; do
+cd "$(dirname "$0")"
+tags=$(ls -d */)
+for tag in ${tags%/*} ; do
   image=akorn/chromium-headless:${tag}
   echo building $image ...
   docker build -t ${image} ${tag}
@@ -17,5 +17,5 @@ for tag in "${tags[@]%/}" ; do
   docker tag ${image} akorn/chromium-headless:${major}-${tag}
 
   echo
-  echo "version ${version}"
+  echo "version ${major} (${version})"
 done
