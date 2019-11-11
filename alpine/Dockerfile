@@ -2,9 +2,8 @@ FROM alpine
 
 RUN set -ex \
     \
-    && apk add --no-cache chromium
-
-RUN set -ex \
+    && apk add --no-cache chromium \
+    \
     && mkdir /data \
     && chown nobody /data
 
