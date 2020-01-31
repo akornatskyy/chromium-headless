@@ -3,8 +3,8 @@
 set -e
 
 cd "$(dirname "$0")"
-tags=$(ls -d */)
-for tag in ${tags%/*} ; do
+tags=$(ls -d */ | tr -d \/)
+for tag in ${tags} ; do
   image=akorn/chromium-headless:${tag}
   echo building $image ...
   docker build -t ${image} ${tag}
