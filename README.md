@@ -1,11 +1,11 @@
 # Chromium Headless Docker Library
 
-[![Build Status](https://travis-ci.org/akornatskyy/chromium-headless.svg?branch=master)](https://travis-ci.org/akornatskyy/chromium-headless) [![Docker Image](https://images.microbadger.com/badges/image/akorn/chromium-headless.svg)](https://microbadger.com/images/akorn/chromium-headless) [![Docker Version](https://images.microbadger.com/badges/version/akorn/chromium-headless.svg)](https://microbadger.com/images/akorn/chromium-headless)
+![image](https://github.com/akornatskyy/chromium-headless/workflows/image/badge.svg)
 
 ## Images
 
 These [images](https://hub.docker.com/r/akorn/chromium-headless) are based on
-the [Alpine Linux](https://alpinelinux.org/).
+the [Alpine Linux](https://alpinelinux.org/) (linux/amd64, linux/arm64).
 
 ## How to use
 

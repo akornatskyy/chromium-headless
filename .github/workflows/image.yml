@@ -1,0 +1,29 @@
+name: image
+
+on:
+  schedule:
+    - cron: "0 4 * * 0"  # At 04:00 on Sunday.
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v3
+        with:
+          buildx-version: latest
+          qemu-version: latest
+      - name: available platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
+      - name: login to docker hub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | \
+          docker login -u akorn --password-stdin
+      - name: buildx
+        run: sh ./buildx.sh
