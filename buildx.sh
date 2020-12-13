@@ -23,5 +23,3 @@ for tag in ${tags} ; do
   echo
   echo "version ${major} (${version})"
 done
-
-docker images
