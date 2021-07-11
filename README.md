@@ -12,16 +12,16 @@ the [Alpine Linux](https://alpinelinux.org/) (linux/amd64, linux/arm64).
 The default docker entrypoint:
 
 ```sh
-chromium-browser --headless --user-data-dir=/data \
-  --disable-gpu --disable-software-rasterizer \
-  --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222
+chromium-browser --headless --headless \
+  --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 \
+  --user-data-dir=/data --disable-software-rasterizer --disable-dev-shm-usage
 ```
 
 Run chromium in [sandbox](https://chromium.googlesource.com/chromium/src/+/master/docs/design/sandbox.md) (requires SYS_ADMIN capability):
 
 ```sh
 docker run -it --rm --name=chromium-headless \
-  -p=0.0.0.0:9222:9222 --cap-add=SYS_ADMIN --shm-size=256Mb \
+  -p=0.0.0.0:9222:9222 --cap-add=SYS_ADMIN \
   -v /tmp/chromium-data/:/data akorn/chromium-headless:alpine
 ```
 
@@ -30,7 +30,7 @@ loading images:
 
 ```sh
 docker run -it --rm --name=chromium-headless \
-  -p=0.0.0.0:9222:9222 --cap-add=SYS_ADMIN --shm-size=256Mb \
+  -p=0.0.0.0:9222:9222 --cap-add=SYS_ADMIN \
   -v /tmp/chromium-data/:/data akorn/chromium-headless:alpine \
   --blink-settings=imagesEnabled=false --mute-audio
 ```
